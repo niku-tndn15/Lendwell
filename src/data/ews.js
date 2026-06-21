@@ -1,0 +1,87 @@
+// Dataset 4 — EWS Active Portfolio (PRD §11)
+export const EWS_PORTFOLIO = {
+  enrolledBorrowers: 4,
+  activeAlerts: 1,
+  lastRefreshed: 'Today, 09:15 AM',
+  portfolio: [
+    {
+      borrowerId: 'APP-001',
+      name: 'Ananya Sen',
+      loanAmount: 80000,
+      emiDueDate: '5th of every month',
+      lastBalanceCheck: '21400',
+      alertStatus: 'Clear',
+      rule1Triggered: false,
+      rule2Triggered: false,
+      rule3Triggered: false,
+      alert: null,
+    },
+    {
+      borrowerId: 'APP-003',
+      name: 'Priya Sharma',
+      loanAmount: 1500000,
+      emiDueDate: '1st of every month',
+      lastBalanceCheck: '52000',
+      alertStatus: 'Clear',
+      rule1Triggered: false,
+      rule2Triggered: false,
+      rule3Triggered: false,
+      alert: null,
+    },
+    {
+      borrowerId: 'APP-004',
+      name: 'Mohammed Siddiqui',
+      loanAmount: 120000,
+      emiDueDate: '3rd of every month',
+      lastBalanceCheck: '18200',
+      alertStatus: 'High Alert',
+      rule1Triggered: true,
+      rule2Triggered: false,
+      rule3Triggered: false,
+      alert: {
+        severity: 'High',
+        type: 'Income Drop Detected',
+        triggeredRule: 'Rule 1 - Salary/Income drop > 30% vs 3-month average',
+        detail: 'Income this month: ₹32,000 vs 3-month avg: ₹68,000 — drop of 53%. Significantly exceeds the 30% threshold.',
+        lastEmiStatus: 'Paid on time — 3rd of this month',
+        nextEmiDue: '3rd of next month',
+        nextEmiAmount: 7800,
+        currentBalance: 18200,
+        avgBalance3Month: 32000,
+        recommendedAction: 'Review Account — Contact borrower to verify income status. Consider proactive restructuring offer.',
+        detectedAt: 'Today, 07:42 AM',
+      },
+    },
+    {
+      borrowerId: 'APP-005',
+      name: 'Kavitha Nair',
+      loanAmount: 60000,
+      emiDueDate: '10th of every month',
+      lastBalanceCheck: '9800',
+      alertStatus: 'Clear',
+      rule1Triggered: false,
+      rule2Triggered: false,
+      rule3Triggered: false,
+      alert: null,
+    },
+  ],
+}
+
+// Individual EWS monitoring rules (same for all enrolled borrowers in prototype)
+export const EWS_TRIGGER_RULES = [
+  {
+    id: 'rule1',
+    label: 'Trigger Rule 1',
+    description: 'Salary/Income drop > 30% vs 3-month average — Auto-Flag to credit team',
+  },
+  {
+    id: 'rule2',
+    label: 'Trigger Rule 2',
+    description: 'EMI bounce detected — Immediate alert + outbound nudge to borrower',
+  },
+  {
+    id: 'rule3',
+    label: 'Trigger Rule 3',
+    description: 'Balance falls below ₹1,000 for 5+ consecutive days — Early warning raised',
+  },
+]

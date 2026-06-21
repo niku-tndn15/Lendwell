@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Skeleton pulse ─────────────────────────────────────────────────────── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.skeleton {
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+  background-color: hsl(222, 24%, 20%);
+  border-radius: 6px;
+}
+
+/* ── Demo spotlight ─────────────────────────────────────────────────────── */
+.demo-spotlight-active {
+  position: relative !important;
+  z-index: 1001 !important;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.65) !important;
+  border-radius: 8px;
+}
+
+/* ── Toast animation ────────────────────────────────────────────────────── */
+@keyframes toast-slide-in {
+  from { transform: translateX(calc(100% + 1rem)); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+.toast-enter {
+  animation: toast-slide-in 250ms ease-out forwards;
+}
+
+/* ── Presentation Mode overrides ─────────────────────────────────────────── */
+.presentation-mode .reset-demo-btn    { display: none !important; }
+.presentation-mode .header-debug      { display: none !important; }
+.presentation-mode .global-header     { padding: 8px 24px !important; }
+.presentation-mode .lender-sidebar    { width: 64px !important; }
+.presentation-mode .sidebar-label     { display: none !important; }
+.presentation-mode .phone-frame-wrapper {
+  transform: scale(1.05);
+  transform-origin: center top;
+}
+
+/* ── Demo card auto-play progress bar ───────────────────────────────────── */
+@keyframes demo-progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ── B5: Success checkmark pulse ring ────────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.85); opacity: 0.8; }
+  50%  { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(0.85); opacity: 0.8; }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+@keyframes check-pop {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.check-pop {
+  animation: check-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ── B4: Fetch step item entrance ────────────────────────────────────────── */
+@keyframes step-enter {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.step-enter {
+  animation: step-enter 300ms ease-out forwards;
+}
+
+/* ── B4: Done checkmark pop-in ───────────────────────────────────────────── */
+@keyframes check-scale-in {
+  0%   { transform: scale(0);   opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.check-scale-in {
+  animation: check-scale-in 250ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── B2: Glow pulse for trust badge ─────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* ── Focus rings ─────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid hsl(160, 84%, 39%);
+  outline-offset: 2px;
+}
+
+/* ── Range input styling (B1 slider) ────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #e5e7eb;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: hsl(245, 82%, 58%);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.4);
+  transition: box-shadow 150ms ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 2px 12px rgba(79, 70, 229, 0.5);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+}
+
+/* ── OTP input boxes (B3) ────────────────────────────────────────────────── */
+.otp-input {
+  width: 56px;
+  height: 64px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  background: #fafafa;
+  color: #1f2937;
+}
+
+.otp-input:focus {
+  border-color: hsl(245, 82%, 58%);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  background: #fff;
+}
+
+.otp-input.filled {
+  border-color: hsl(245, 82%, 58%);
+  background: hsl(245, 82%, 97%);
+}
+
+/* ── Scrollbar styling ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: hsl(0, 0%, 96%); }
+::-webkit-scrollbar-thumb {
+  background: hsl(215, 20%, 30%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: hsl(215, 20%, 45%); }
