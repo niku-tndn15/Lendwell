@@ -22,7 +22,7 @@ function AppInner() {
 
   return (
     <div className={`h-screen flex flex-col overflow-hidden${presentationMode ? ' presentation-mode' : ''}`}>
-      <BrowserRouter>
+      <BrowserRouter basename="/Lendwell">
         {/* Always-rendered globals */}
         <GlobalHeader />
         <GuidedDemoOverlay />
